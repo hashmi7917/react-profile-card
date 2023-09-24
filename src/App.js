@@ -1,4 +1,15 @@
-import "./styles.css";
+import './styles.css';
+
+const skills = [
+  { skillType: 'Html & Css', level: '💪', color: '#DFFF00' },
+  { skillType: 'JavaScript', level: '💪', color: '#FFBF00' },
+  { skillType: 'Web Design', level: '✊', color: '#FF7F50' },
+  { skillType: 'Git & GitHub', level: '💪', color: '#DE3163' },
+  { skillType: 'React JS', level: '✊', color: '#6495ED' },
+  { skillType: 'Bootstrap', level: '💪', color: '#CCCCFF' },
+  { skillType: 'MongoDb', level: '✊', color: '#40E0D0' },
+  { skillType: 'Tailwind', level: '✊', color: '#9FE2BF' },
+];
 
 export default function App() {
   return (
@@ -35,24 +46,21 @@ function Intro() {
 }
 
 function Skills() {
+  const skillSet = skills;
   return (
-    <div>
-      <SkillList name="HTML & CSS" color="blue" />
-      <SkillList name="JavaScript" color="yellow" />
-      <SkillList name="Web Designing" color="lightgreen" />
-      <SkillList name="Git and GitHub" color="red" />
-      <SkillList name="React JS" color="skyblue" />
-      <SkillList name="Sevelte" color="orange" />
-      <SkillList name="Bootstrap" color="blue" />
-    </div>
+    <ul>
+      {skillSet.map((skill) => (
+        <SkillList skillObj={skill} key={skill.skillType} />
+      ))}
+    </ul>
   );
 }
 
-function SkillList(props) {
+function SkillList({ skillObj }) {
   return (
     <ul className="skill">
-      <li className="skillset" style={{ backgroundColor: `${props.color}` }}>
-        {props.name}
+      <li className="skillset" style={{ backgroundColor: `${skillObj.color}` }}>
+        {skillObj.skillType} <span>{skillObj.level}</span>
       </li>
     </ul>
   );
